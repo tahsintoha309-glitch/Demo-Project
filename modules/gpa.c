@@ -18,6 +18,9 @@ double getGradePoint(CourseResult result)
 {
     double percentage = getPercentage(result);
 
+    if (!result.completed)
+        return 0.0;
+
     for (int i = 0; i < 9; i++)
     {
         if (percentage >= gradeBoundaries[i])
@@ -30,6 +33,9 @@ double getGradePoint(CourseResult result)
 char *getLetterGrade(CourseResult result)
 {
     double percentage = getPercentage(result);
+
+    if (!result.completed)
+        return "I";
 
     for (int i = 0; i < 9; i++)
     {
@@ -47,6 +53,9 @@ double calculateGPA(CourseResult results[], int n_results)
 
     for (int i = 0; i < n_results; i++)
     {
+        if (!results[i].completed)
+            continue;
+
         weighted_points += getGradePoint(results[i]) * results[i].course->credit;
         total_credits += results[i].course->credit;
     }
