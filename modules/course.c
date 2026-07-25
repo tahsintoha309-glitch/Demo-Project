@@ -19,4 +19,4 @@ void viewCourse(Course course)
     printf("Code: %s\n",course.code);
     printf("Name: %s\n",course.name);
     printf("Credit: %.1lf\n",course.credit);
-}
+}   
