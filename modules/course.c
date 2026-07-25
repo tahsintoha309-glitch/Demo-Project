@@ -7,7 +7,7 @@ Course createCourse(char code[],char name[], double credit)
     Course course;
 
     strcpy(course.code,code);
-    strcpy(course.code,name);
+    strcpy(course.name,name);
     course.credit=credit;
 
     return course;
@@ -18,5 +18,5 @@ void viewCourse(Course course)
 {
     printf("Code: %s\n",course.code);
     printf("Name: %s\n",course.name);
-    printf("Credit: %.lf\n",course.credit);
+    printf("Credit: %.1lf\n",course.credit);
 }
