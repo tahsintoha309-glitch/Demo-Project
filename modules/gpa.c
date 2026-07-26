@@ -2,7 +2,17 @@
 
 const double gradeBoundaries[] = {80, 75, 70, 65, 60, 55, 50, 45, 40};
 const double gradePoints[] = {4.00, 3.75, 3.50, 3.25, 3.00, 2.75, 2.50, 2.25, 2.00};
-const char *gradeLetters[] = {"A+", "A", "A-", "B+", "B", "B-", "C+", "C", "D"};
+const char *gradeLetters[] = {
+    "A+",
+    "A",
+    "A-",
+    "B+",
+    "B",
+    "B-",
+    "C+",
+    "C",
+    "D"
+};
 
 double getPercentage(CourseResult result)
 {
@@ -16,10 +26,10 @@ double getPercentage(CourseResult result)
 
 double getGradePoint(CourseResult result)
 {
-    double percentage = getPercentage(result);
-
     if (!result.completed)
         return 0.0;
+
+    double percentage = getPercentage(result);
 
     for (int i = 0; i < 9; i++)
     {
@@ -32,10 +42,10 @@ double getGradePoint(CourseResult result)
 
 char *getLetterGrade(CourseResult result)
 {
-    double percentage = getPercentage(result);
-
     if (!result.completed)
         return "I";
+
+    double percentage = getPercentage(result);
 
     for (int i = 0; i < 9; i++)
     {
@@ -56,8 +66,12 @@ double calculateGPA(CourseResult results[], int n_results)
         if (!results[i].completed)
             continue;
 
-        weighted_points += getGradePoint(results[i]) * results[i].course->credit;
-        total_credits += results[i].course->credit;
+        weighted_points +=
+            getGradePoint(results[i]) *
+            results[i].course->credit;
+
+        total_credits +=
+            results[i].course->credit;
     }
 
     if (total_credits == 0.0)
